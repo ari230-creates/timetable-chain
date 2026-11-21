@@ -63,6 +63,9 @@ target_link_libraries(timetable-server PRIVATE core)
 if(NOT MSVC)
     target_link_libraries(timetable-server PRIVATE pthread)
 endif()
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux" AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(timetable-server PRIVATE -static-libstdc++ -static-libgcc)
+endif()
 
 # ==============================================================================
 # Qt6 Package & Setup (Desktop GUI & GUI Integration Tests)

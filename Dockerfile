@@ -11,8 +11,8 @@ COPY web/ ./
 RUN npm run build
 
 # Stage 2: Build C++17 Core & Native HTTP Server
-FROM gcc:13-bookworm AS backend-builder
-RUN apt-get update && apt-get install -y cmake make libpthread-stubs0-dev && rm -rf /var/lib/apt/lists/*
+FROM debian:bookworm-slim AS backend-builder
+RUN apt-get update && apt-get install -y g++ cmake make && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY CMakeLists.txt ./
 COPY core/ ./core/
@@ -21,9 +21,9 @@ COPY data/ ./data/
 COPY tests/ ./tests/
 COPY cli/ ./cli/
 
-# Compile core and timetable-server
+# Compile core and timetable-server with static libstdc++
 RUN mkdir -p build && cd build && \
-    cmake .. -DCMAKE_BUILD_TYPE=Release && \
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXE_LINKER_FLAGS="-static-libstdc++ -static-libgcc" && \
     cmake --build . --target timetable-server -j$(nproc)
 
 # Stage 3: Minimal Production Runtime

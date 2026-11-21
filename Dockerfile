@@ -27,7 +27,7 @@ RUN mkdir -p build && cd build && \
 # Stage 3: Minimal Production Runtime
 FROM debian:bookworm-slim AS runtime
 WORKDIR /app
-RUN apt-get update && apt-get install -y ca-certificates && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y ca-certificates curl && rm -rf /var/lib/apt/lists/*
 
 # Copy binaries, static web assets, and default datasets
 COPY --from=backend-builder /app/build/timetable-server ./

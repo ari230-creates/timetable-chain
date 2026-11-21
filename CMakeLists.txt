@@ -37,18 +37,22 @@ target_include_directories(core PUBLIC core/include)
 # ==============================================================================
 enable_testing()
 
-add_executable(tests tests/test_main.cpp)
-target_link_libraries(tests PRIVATE core)
-if(NOT MSVC)
-    target_compile_options(tests PRIVATE -UNDEBUG)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/test_main.cpp")
+    add_executable(tests tests/test_main.cpp)
+    target_link_libraries(tests PRIVATE core)
+    if(NOT MSVC)
+        target_compile_options(tests PRIVATE -UNDEBUG)
+    endif()
+    add_test(NAME CoreTests COMMAND tests)
 endif()
-add_test(NAME CoreTests COMMAND tests)
 
 # ==============================================================================
 # Target: cli (Optional Tiny Text Program "timetable" - Demo + Verifier)
 # ==============================================================================
-add_executable(timetable cli/main.cpp)
-target_link_libraries(timetable PRIVATE core)
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/cli/main.cpp")
+    add_executable(timetable cli/main.cpp)
+    target_link_libraries(timetable PRIVATE core)
+endif()
 
 # ==============================================================================
 # Target: server (Native HTTP REST API Server - Web Backend)

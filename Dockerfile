@@ -18,6 +18,8 @@ COPY CMakeLists.txt ./
 COPY core/ ./core/
 COPY server/ ./server/
 COPY data/ ./data/
+COPY tests/ ./tests/
+COPY cli/ ./cli/
 
 # Compile core and timetable-server
 RUN mkdir -p build && cd build && \

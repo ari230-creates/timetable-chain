@@ -1,0 +1,40 @@
+# Full academic week sample dataset (Mon - Sat)
+SUBJECT|1|Data Structures|4
+SUBJECT|2|Algorithms|4
+SUBJECT|3|Databases|3
+SUBJECT|4|Operating Systems|3
+SUBJECT|5|Networks|2
+FACULTY|1|Dr. Rao
+FACULTY|2|Prof. Devi
+FACULTY|3|Dr. Iyer
+FACULTY|4|Prof. Khan
+CAN|1|1
+CAN|1|2
+CAN|2|3
+CAN|2|4
+CAN|3|4
+CAN|3|5
+CAN|4|2
+CAN|4|5
+UNAVAILABLE|1|6
+UNAVAILABLE|2|4
+UNAVAILABLE|2|5
+UNAVAILABLE|2|6
+SLOT|1|Mon|1
+SLOT|2|Mon|2
+SLOT|3|Mon|3
+SLOT|4|Tue|1
+SLOT|5|Tue|2
+SLOT|6|Tue|3
+SLOT|7|Wed|1
+SLOT|8|Wed|2
+SLOT|9|Wed|3
+SLOT|10|Thu|1
+SLOT|11|Thu|2
+SLOT|12|Thu|3
+SLOT|13|Fri|1
+SLOT|14|Fri|2
+SLOT|15|Fri|3
+SLOT|16|Sat|1
+SLOT|17|Sat|2
+SLOT|18|Sat|3
